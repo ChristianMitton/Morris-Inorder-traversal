@@ -5,20 +5,20 @@ class Tree:
         self.right = None
 
     def morrisInorder(self):
-        current = self
-        while current != None:
-            if current.left == None:
-                print(current.val,end=' ')
-                current = current.right
+        ptr = self
+        while ptr != None:
+            if ptr.left == None:
+                print(ptr.val,end=' ')
+                ptr = ptr.right
             else:
-                predecessor = self.getpredecessor(current)                        
+                predecessor = self.getpredecessor(ptr)                        
                 if predecessor.right == None:
-                    predecessor.right = current
-                    current = current.left
+                    predecessor.right = ptr
+                    ptr = ptr.left
                 elif predecessor.right != None:                
-                    print(current.val,end=' ')
+                    print(ptr.val,end=' ')
                     predecessor.right = None                
-                    current = current.right
+                    ptr = ptr.right
         print()
 
     def getpredecessor(self, root):
